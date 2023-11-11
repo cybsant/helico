@@ -20,8 +20,6 @@ MAP_W, MAP_H = 12, 24
 
 # !--------------------------
 # TODO(?) Menu > Select Theme
-
-# !---------------------------------
 # TODO(?) HowTo set background color
 
 field = Map(MAP_W, MAP_H)
@@ -30,6 +28,7 @@ field.gen_river(10)
 field.gen_river(9)
 field.gen_water(7)
 field.gen_water(5)
+
 #field.draw_map(helico)
 
 helico = Helico(MAP_W, MAP_H)

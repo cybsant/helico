@@ -1,4 +1,3 @@
-# 🚁 - вертолет 🚒🚁🛩
 from utils import randcell
 
 class Helicopter:
