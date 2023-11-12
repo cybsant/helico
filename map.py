@@ -2,6 +2,7 @@ from utils import randbool
 from utils import randcell
 from utils import randcell2
 
+# TODO выбор в зависимости от мода
 #CELL_TYPES = ['🟫', '🌵', '⛲', '💊', '🛠', '🔥'] # * DESERT
 #CELL_TYPES = ['🟩', '🌴', '🟦', '⛑', '🛠', '🔥'] # * TROPICA
 #CELL_TYPES = ['⬜', '🎄', '🌊', '🏥', '🏦', '🔥'] # * WINTER
@@ -20,8 +21,8 @@ class Map:
             return False
         return True
 
+#TODO  MAKET инфо панели
 #    def draw_info(self):
-#        #! INFO MAKET !
 #        print(f'╭{"─" * (self.w)*2}╮')
 #        print("│", end="")
 #        print(f'[L:{"💜" * (self.w//2-2)}][T:        ]', end="")
@@ -50,7 +51,7 @@ class Map:
                 if randbool(r, mxr):
                     self.cells[ri][ci] = 1
 
-    def gen_river(self, l):
+    def gen_river(self, l):  # TODO переделать в реки
         rc = randcell(self.w, self.h)
         rx, ry = rc[0], rc[1]
         self.cells[rx][ry] = 2
@@ -62,7 +63,7 @@ class Map:
                 rx, ry = rx2, ry2
                 l -= 1
 
-    def gen_water(self, l):
+    def gen_water(self, l):  # TODO переделать в озера
         rc = randcell(self.w, self.h)
         rx, ry = rc[0], rc[1]
         self.cells[rx][ry] = 2

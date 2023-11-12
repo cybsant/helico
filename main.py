@@ -26,10 +26,10 @@ field = Map(MAP_W, MAP_H)
 field.gen_forest(3, 10)
 field.gen_river(10)
 field.gen_river(9)
-field.gen_water(7)
-field.gen_water(5)
+#field.gen_water(7)
+#field.gen_water(5)
 
-#field.draw_map(helico)
+#field.draw_map()
 
 helico = Helico(MAP_W, MAP_H)
 
