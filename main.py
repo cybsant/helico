@@ -27,8 +27,8 @@ field = Map(MAP_W, MAP_H)
 field.gen_forest(3, 10)
 field.gen_river(10)
 field.gen_river(9)
-#field.gen_water(7)
-#field.gen_water(5)
+field.gen_water(7)
+field.gen_water(5)
 
 #field.draw_map()
 
@@ -38,7 +38,7 @@ tick = 1
 
 while True:
     system('cls' if name == 'nt' else 'clear')
-    #field.draw_info()
+    field.draw_info()
     field.draw_map(helico)
     tick += 1
     sleep(TICK_SLEEP)
