@@ -14,7 +14,7 @@ FIRE_UPD = 50
 #? Sml
 #MAP_W, MAP_H = 16, 8
 #? Med
-MAP_W, MAP_H = 24, 16
+#MAP_W, MAP_H = 24, 16
 #? Big
 #MAP_W, MAP_H = 32, 24
 #? Gig
@@ -22,22 +22,19 @@ MAP_W, MAP_H = 24, 16
 #? Mobile
 #MAP_W, MAP_H = 12, 24
 
+MAP_W, MAP_H = 20, 10
+
 # !--------------------------
 # TODO(?) Menu > Select Theme
 # TODO(?) HowTo set background color
 
 field = Map(MAP_W, MAP_H)
-field.gen_forest(3, 10)
-field.gen_river(10)
-field.gen_river(9)
-field.gen_water(7)
-field.gen_water(5)
 
 helico = Helico(MAP_W, MAP_H)
 
 MOVES = {'w': (-1, 0), 'd': (0, 1), 's': (1, 0), 'a': (0, -1)}
 
-def prs_key(key):
+def pres_key(key):
     global helico
     c = key.char.lower()
     if c in MOVES.keys():
@@ -46,15 +43,15 @@ def prs_key(key):
 
 listener = keyboard.Listener(
     on_press=None,
-    on_release=prs_key)
+    on_release=pres_key)
 listener.start()
-
 
 tick = 1
 
 while True:
     system('cls' if name == 'nt' else 'clear')
-    #field.draw_info()
+    field.proc_helico(helico)
+    helico.draw_info() 
     field.draw_map(helico)
     tick += 1
     sleep(TICK_SLEEP)

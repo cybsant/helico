@@ -7,15 +7,24 @@ from utils import randcell2
 #CELL_TYPES = ['🟩', '🌴', '🟦', '⛑', '🛠', '🔥'] # * TROPICA
 #CELL_TYPES = ['⬜', '🎄', '🌊', '🏥', '🏦', '🔥'] # * WINTER
 #CELL_TYPES = ['⬛', '🌲', '🌊', '🏥', '🏦', '🔥'] # * DEFAUT
-CELL_TYPES = ['⚫', '🌳', '🌀', '🍄', '✨', '🔥']  #>* FANTASY
-
+CELL_TYPES = ['  ', '🌳', '🌀', '🍄', '✨', '🔥']  #>* FANTASY
+# >>>>>>>>>>    0     1     2     3     4     5
+TREE_BOUNS = 100
+#TODO игровой баланс 5000?
+UPGRADE_COST = 500
 class Map:
 
     def __init__(self, w, h):
         self.w = w
         self.h = h
         self.cells = [[0 for i in range(w)] for j in range(h)]
-
+        self.gen_forest(3, 10)
+        self.gen_river(10)
+        self.gen_river(9)
+        self.gen_water(7)
+        self.gen_water(5)
+        self.gen_upgrades()
+        
     def check_bounds(self, x, y):
         if x < 0 or y < 0 or x >= self.h or y >= self.w:
             return False
@@ -39,7 +48,7 @@ class Map:
             for ci in range(self.w):
                 cell = self.cells[ri][ci]
                 if (helico.x == ri and helico.y == ci):
-                    print("🚁", end="")
+                    print("🚒", end="")
                 elif 0 <= cell < len(CELL_TYPES):
                     print(CELL_TYPES[cell], end="")
             print("│")
@@ -75,6 +84,11 @@ class Map:
                 rx, ry = rx2, ry2
                 l -= 1
 
+    def gen_upgrades(self):
+        c = randcell(self.w, self.h)
+        cx, cy = c[0], c[1]
+        self.cells[cx][cy] = 4
+
     def add_tree(self):
         c = randcell(self.w, self.h)
         cx, cy = c[0], c[1]
@@ -91,7 +105,19 @@ class Map:
         for ri in range(self.h):
             for ci in range(self.w):
                 cell = self.cells[ri][ci]
-                if cell == 5:
+                if (cell == 5):
                     self.cells[ri][ci] = 0
         for i in range(5):
             self.add_fire()
+
+    def proc_helico(self, helico):
+        c = self.cells[helico.x][helico.y]
+        if (c == 2):
+            helico.tank = helico.mxtank
+        if (c == 5 and helico.tank > 0):
+            helico.tank -= 1
+            helico.score += TREE_BOUNS
+            self.cells[helico.x][helico.y] = 1
+        if (c == 4 and helico.score >= UPGRADE_COST):
+            helico.score -= UPGRADE_COST
+            helico.mxtank += 1
