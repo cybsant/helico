@@ -21,16 +21,16 @@ class Map:
             return False
         return True
 
-#TODO  MAKET инфо панели
-    def draw_info(self):
-        print(f'╭{"─" * (self.w)*2}╮')
-        print("│", end="")
-        print(f'[L:{"💜" * (self.w//2-2)}][T:        ]', end="")
-        print("│")
-        print("│", end="")
-        print(f'[W:{"💧" * (self.w//2-3)}  ][M:{"💲" * (self.w//2-3)}  ]', end="")
-        print("│")
-        print(f'╰{"─" * (self.w)*2}╯')
+    #TODO  MAKET инфо панели
+    #def draw_info(self):
+    #    print(f'╭{"─" * (self.w)*2}╮')
+    #    print("│", end="")
+    #    print(f'[L:{"💜" * (self.w//2-2)}][T:        ]', end="")
+    #    print("│")
+    #    print("│", end="")
+    #    print(f'[W:{"💧" * (self.w//2-3)}  ][M:{"💲" * (self.w//2-3)}  ]', end="")
+    #    print("│")
+    #    print(f'╰{"─" * (self.w)*2}╯')
 
     def draw_map(self, helico):
         print(f'╭{"─" * (self.w)*2}╮')
