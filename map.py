@@ -7,11 +7,16 @@ from utils import randcell2
 #CELL_TYPES = ['🟩', '🌴', '🟦', '⛑', '🛠', '🔥'] # * TROPICA
 #CELL_TYPES = ['⬜', '🎄', '🌊', '🏥', '🏦', '🔥'] # * WINTER
 #CELL_TYPES = ['⬛', '🌲', '🌊', '🏥', '🏦', '🔥'] # * DEFAUT
-CELL_TYPES = ['  ', '🌳', '🌀', '🍄', '✨', '🔥']  #>* FANTASY
+CELL_TYPES = [' ⬛', '🌳', '🌀', '🏥', '🏦', '🔥']
 # >>>>>>>>>>    0     1     2     3     4     5
+#INFO_TYPES = ['💰','💧','💜']
+#DYN_TYPES = ['🌧 ','🌩 ','🚒']
+
+#TODO !!! игровой баланс !!! 
 TREE_BOUNS = 100
-#TODO игровой баланс 5000?
 UPGRADE_COST = 500
+LIFE_COST = 500
+
 class Map:
 
     def __init__(self, w, h):
@@ -23,31 +28,25 @@ class Map:
         self.gen_river(9)
         self.gen_water(7)
         self.gen_water(5)
-        self.gen_upgrades()
-        
+        self.gen_upgrade()
+        self.gen_medic()
+
     def check_bounds(self, x, y):
         if x < 0 or y < 0 or x >= self.h or y >= self.w:
             return False
         return True
 
-    #TODO  MAKET инфо панели
-    #def draw_info(self):
-    #    print(f'╭{"─" * (self.w)*2}╮')
-    #    print("│", end="")
-    #    print(f'[L:{"💜" * (self.w//2-2)}][T:        ]', end="")
-    #    print("│")
-    #    print("│", end="")
-    #    print(f'[W:{"💧" * (self.w//2-3)}  ][M:{"💲" * (self.w//2-3)}  ]', end="")
-    #    print("│")
-    #    print(f'╰{"─" * (self.w)*2}╯')
-
-    def draw_map(self, helico):
+    def draw_map(self, helico, clouds):
         print(f'╭{"─" * (self.w)*2}╮')
         for ri in range(self.h):
             print("│", end="")
             for ci in range(self.w):
                 cell = self.cells[ri][ci]
-                if (helico.x == ri and helico.y == ci):
+                if (clouds.cells[ri][ci] == 1):
+                    print("🌧 ", end="")
+                elif (clouds.cells[ri][ci] == 2):
+                    print("🌩 ", end="")
+                elif (helico.x == ri and helico.y == ci):
                     print("🚒", end="")
                 elif 0 <= cell < len(CELL_TYPES):
                     print(CELL_TYPES[cell], end="")
@@ -84,10 +83,18 @@ class Map:
                 rx, ry = rx2, ry2
                 l -= 1
 
-    def gen_upgrades(self):
+    def gen_upgrade(self):
         c = randcell(self.w, self.h)
         cx, cy = c[0], c[1]
         self.cells[cx][cy] = 4
+
+    def gen_medic(self):
+        c = randcell(self.w, self.h)
+        cx, cy = c[0], c[1]
+        if (self.cells[cx][cy] != 4):
+            self.cells[cx][cy] = 3
+        else:
+            self.gen_medic()
 
     def add_tree(self):
         c = randcell(self.w, self.h)
@@ -110,8 +117,9 @@ class Map:
         for i in range(5):
             self.add_fire()
 
-    def proc_helico(self, helico):
+    def proc_helico(self, helico, clouds):
         c = self.cells[helico.x][helico.y]
+        d = clouds.cells[helico.x][helico.y]
         if (c == 2):
             helico.tank = helico.mxtank
         if (c == 5 and helico.tank > 0):
@@ -121,3 +129,8 @@ class Map:
         if (c == 4 and helico.score >= UPGRADE_COST):
             helico.score -= UPGRADE_COST
             helico.mxtank += 1
+        if (c == 3 and helico.score >= LIFE_COST):
+            helico.score -= LIFE_COST
+            helico.lives += 10
+        if (d == 2):
+            helico.lives -= 1

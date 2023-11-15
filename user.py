@@ -11,6 +11,7 @@ class Helicopter:
         self.tank = 0
         self.mxtank = 1
         self.score = 0
+        self.lives = 30
 
     def move(self, dx, dy):
         nx, ny = dx + self.x, dy + self.y
@@ -18,4 +19,16 @@ class Helicopter:
             self.x, self.y = nx, ny
 
     def draw_info(self):
-        print(f'💧 {self.tank} / {self.mxtank} | 💰 {self.score}')
+        print(f' | 💧 {self.tank} / {self.mxtank} | 💰 {self.score} | 💜 {self.lives} |')
+
+    #TODO  MAKET инфо панели
+    #def draw_info(self):
+    #    print(f'╭{"─" * (self.w)*2}╮')
+    #    print("│", end="")
+    #    print(f'[L:{"💜" * (self.w//2-2)}][T:        ]', end="")
+    #    print("│")
+    #    print("│", end="")
+    #    print(f'[W:{"💧" * (self.w//2-3)}  ][M:{"💰" * (self.w//2-3)}  ]', end="")
+    #    print("│")
+    #    print(f'╰{"─" * (self.w)*2}╯')
+
