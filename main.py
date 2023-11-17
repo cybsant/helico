@@ -4,14 +4,15 @@ from pynput import keyboard
 from clouds import Clouds
 
 from map import Map
-from user import Helicopter as Helico
+from user import Helico
 
 TICK_SLEEP = 0.2
 TREE_UPD = 25
 CLOUDS_UPD = 100
 FIRE_UPD = 50
 
-# TODO выбор размера карты юзером и умолчания на основе размера экрана(терминала).
+# TODO Выбор размера карты юзером и 
+# TODO Умолчания на основе размера экрана(терминала) например.
 #? Sml
 #MAP_W, MAP_H = 16, 8
 #? Med

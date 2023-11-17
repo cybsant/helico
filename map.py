@@ -1,16 +1,17 @@
 from utils import randbool
 from utils import randcell
 from utils import randcell2
+from user import Helico
 
 # TODO выбор в зависимости от мода
 #CELL_TYPES = ['🟫', '🌵', '⛲', '💊', '🛠', '🔥'] # * DESERT
 #CELL_TYPES = ['🟩', '🌴', '🟦', '⛑', '🛠', '🔥'] # * TROPICA
 #CELL_TYPES = ['⬜', '🎄', '🌊', '🏥', '🏦', '🔥'] # * WINTER
 #CELL_TYPES = ['⬛', '🌲', '🌊', '🏥', '🏦', '🔥'] # * DEFAUT
-CELL_TYPES = [' ⬛', '🌳', '🌀', '🏥', '🏦', '🔥']
+CELL_TYPES = ['⬛', '🌳', '🌀', '🏥', '🏦', '🔥']
 # >>>>>>>>>>    0     1     2     3     4     5
 #INFO_TYPES = ['💰','💧','💜']
-#DYN_TYPES = ['🌧 ','🌩 ','🚒']
+#MOV_TYPES = ['🌧 ','🌩 ','🚒']
 
 #TODO !!! игровой баланс !!! 
 TREE_BOUNS = 100
@@ -134,3 +135,5 @@ class Map:
             helico.lives += 10
         if (d == 2):
             helico.lives -= 1
+            if (helico.lives == 0):
+                helico.game_over(self)

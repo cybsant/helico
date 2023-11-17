@@ -1,6 +1,7 @@
+from os import system, name
 from utils import randcell
 
-class Helicopter:
+class Helico:
     def __init__(self, w, h):
         rc = randcell(w, h)
         rx, ry = rc[0], rc[1]
@@ -21,7 +22,7 @@ class Helicopter:
     def draw_info(self):
         print(f' | 💧 {self.tank} / {self.mxtank} | 💰 {self.score} | 💜 {self.lives} |')
 
-    #TODO  MAKET инфо панели
+    #TODO Причесать MAKET инфо панели
     #def draw_info(self):
     #    print(f'╭{"─" * (self.w)*2}╮')
     #    print("│", end="")
@@ -32,3 +33,13 @@ class Helicopter:
     #    print("│")
     #    print(f'╰{"─" * (self.w)*2}╯')
 
+    def game_over(self):
+        system('cls' if name == 'nt' else 'clear')
+        #print(f'╭{"─" * (self.w)*2}╮')
+        #print("│", end="")
+        #print(f'[W:{"💧" * (self.w//2-3)}  ][M:{"💰" * (self.w//2-3)}  ]', end="")
+        #print("│")
+        #print(f'╰{"─" * (self.w)*2}╯')
+        print(' :. GAME OVER .: ')
+        print(f' :. SCORE: {self.score} .: ')
+        #listener.stop()
