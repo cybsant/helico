@@ -136,4 +136,5 @@ class Map:
         if (d == 2):
             helico.lives -= 1
             if (helico.lives == 0):
-                helico.game_over(self)
+                Helico.game_over()
+                exit()

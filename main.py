@@ -2,11 +2,10 @@ from os import system, name
 from time import sleep
 from pynput import keyboard
 from clouds import Clouds
-
 from map import Map
 from user import Helico
 
-TICK_SLEEP = 0.2
+TICK_SLEEP = 0.17
 TREE_UPD = 25
 CLOUDS_UPD = 100
 FIRE_UPD = 50
