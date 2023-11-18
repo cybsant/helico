@@ -1,4 +1,4 @@
-from os import abort, system, name
+from os import system, name
 from utils import randcell
 
 class Helico:
@@ -20,10 +20,11 @@ class Helico:
             self.x, self.y = nx, ny
 
     def draw_info(self):
-        print(f' | 💧 {self.tank} / {self.mxtank} | 💰 {self.score} | 💜 {self.lives} |')
+        #print(f' │ 💧 {self.tank} / {self.mxtank} │ 💰 {self.score} | 💜 {self.lives} │')
+        print(f' Water: {self.tank} / {self.mxtank} Score: {self.score} Lives: {self.lives} ')
 
     def draw_score(self):
-        print(self.score)
+        return self.score
 
     #TODO Причесать MAKET инфо панели
     #def draw_info(self):
@@ -36,8 +37,9 @@ class Helico:
     #    print("│")
     #    print(f'╰{"─" * (self.w)*2}╯')
 
-    def game_over():
+    def game_over(self):
         system('cls' if name == 'nt' else 'clear')
-        print(f'╭─────────────────────────────────────────╮')
-        print(f'│ :. GAME OVER .:. YOUR SCORE: {Helico.draw_score} .: │')
-        print(f'╰─────────────────────────────────────────╯')
+        print(f' :. GAME OVER .:. YOUR SCORE: {self.score} .: ')
+        #print(f'╭─────────────────────────────────────────╮')
+        #print(f'│ :. GAME OVER .:. YOUR SCORE: {Helico.draw_score} .: │')
+        #print(f'╰─────────────────────────────────────────╯')
