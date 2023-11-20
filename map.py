@@ -1,3 +1,4 @@
+from os import system, name
 from utils import randbool
 from utils import randcell
 from utils import randcell2
@@ -136,6 +137,7 @@ class Map:
         if (d == 2):
             helico.lives -= 1
             if (helico.lives == 0):
+                system('cls' if name == 'nt' else 'clear')
                 print(f'╭───────────────────────────────────────╮')
                 print(f'│ :. GAME OVER .:. YOUR SCORE: {helico.score} .: │')
                 print(f'╰───────────────────────────────────────╯')

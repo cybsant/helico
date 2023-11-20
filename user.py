@@ -1,4 +1,3 @@
-from os import system, name
 from utils import randcell
 
 class Helico:
