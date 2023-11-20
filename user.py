@@ -39,7 +39,7 @@ class Helico:
 
     def game_over(self):
         system('cls' if name == 'nt' else 'clear')
-        print(f' :. GAME OVER .:. YOUR SCORE: {draw_score} .: ')
+        print(f' :. GAME OVER .:. YOUR SCORE: {Helico.draw_score} .: ')
         #print(f'╭─────────────────────────────────────────╮')
         #print(f'│ :. GAME OVER .:. YOUR SCORE: {Helico.draw_score} .: │')
         #print(f'╰─────────────────────────────────────────╯')
