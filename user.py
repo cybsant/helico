@@ -24,7 +24,7 @@ class Helico:
         print(f' Water: {self.tank} / {self.mxtank} Score: {self.score} Lives: {self.lives} ')
 
     def draw_score(self):
-        return self.score
+        print(self.score)
 
     #TODO Причесать MAKET инфо панели
     #def draw_info(self):
@@ -39,7 +39,7 @@ class Helico:
 
     def game_over(self):
         system('cls' if name == 'nt' else 'clear')
-        print(f' :. GAME OVER .:. YOUR SCORE: {self.score} .: ')
+        print(f' :. GAME OVER .:. YOUR SCORE: {draw_score} .: ')
         #print(f'╭─────────────────────────────────────────╮')
         #print(f'│ :. GAME OVER .:. YOUR SCORE: {Helico.draw_score} .: │')
         #print(f'╰─────────────────────────────────────────╯')
