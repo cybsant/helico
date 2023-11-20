@@ -2,7 +2,6 @@ from os import system, name
 from utils import randbool
 from utils import randcell
 from utils import randcell2
-from user import Helico
 
 # TODO выбор в зависимости от мода
 #CELL_TYPES = ['🟫', '🌵', '⛲', '💊', '🛠', '🔥'] # * DESERT
