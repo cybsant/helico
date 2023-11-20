@@ -136,5 +136,7 @@ class Map:
         if (d == 2):
             helico.lives -= 1
             if (helico.lives == 0):
-                Helico.game_over(self)
-                exit()
+                print(f'╭───────────────────────────────────────╮')
+                print(f'│ :. GAME OVER .:. YOUR SCORE: {helico.score} .: │')
+                print(f'╰───────────────────────────────────────╯')
+                exit(0)

@@ -20,11 +20,7 @@ class Helico:
             self.x, self.y = nx, ny
 
     def draw_info(self):
-        #print(f' │ 💧 {self.tank} / {self.mxtank} │ 💰 {self.score} | 💜 {self.lives} │')
-        print(f' Water: {self.tank} / {self.mxtank} Score: {self.score} Lives: {self.lives} ')
-
-    def draw_score(self):
-        print(self.score)
+        print(f' │ 💧 {self.tank} / {self.mxtank} │ 💰 {self.score} | 💜 {self.lives} │')
 
     #TODO Причесать MAKET инфо панели
     #def draw_info(self):
@@ -36,10 +32,3 @@ class Helico:
     #    print(f'[W:{"💧" * (self.w//2-3)}  ][M:{"💰" * (self.w//2-3)}  ]', end="")
     #    print("│")
     #    print(f'╰{"─" * (self.w)*2}╯')
-
-    def game_over(self):
-        system('cls' if name == 'nt' else 'clear')
-        print(f' :. GAME OVER .:. YOUR SCORE: {Helico.draw_score} .: ')
-        #print(f'╭─────────────────────────────────────────╮')
-        #print(f'│ :. GAME OVER .:. YOUR SCORE: {Helico.draw_score} .: │')
-        #print(f'╰─────────────────────────────────────────╯')
