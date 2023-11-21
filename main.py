@@ -55,10 +55,10 @@ def pres_key(key):
             clouds.import_data(data['clouds'])
             field.import_data(data['field'])
 
-    listener = keyboard.Listener(
-    on_press=None,
-    on_release=pres_key)
-    listener.start()
+listener = keyboard.Listener(
+on_press=None,
+on_release=pres_key)
+listener.start()
 
 while True:
     system('cls' if name == 'nt' else 'clear')
