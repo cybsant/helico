@@ -37,17 +37,20 @@ MOVES = {'w': (-1, 0), 'd': (0, 1), 's': (1, 0), 'a': (0, -1)}
 def pres_key(key):
     global helico, clouds, field, tick
     c = key.char.lower()
-    if c in MOVES.keys():   # MOVING
+    
+    if c in MOVES.keys():   #! MOVING
         dx, dy = MOVES[c][0], MOVES[c][1]
         helico.move(dx, dy)
-    elif c =='f':           # SAVE
+    
+    elif c =='f':           #! SAVE
         data = {"helico": helico.export_data(),
                 "clouds": clouds.export_data(),
                 "field": field.export_data(),
                 "tick": tick}
         with open('level.json', 'w') as lvl:
             json.dump(data, lvl)
-    elif c == 'g':          # LOAD
+    
+    elif c == 'g':          #! LOAD
         with open('level.json', 'r') as lvl:
             data = json.load(lvl)
             tick = data['tick'] or 1
@@ -56,8 +59,8 @@ def pres_key(key):
             field.import_data(data['field'])
 
 listener = keyboard.Listener(
-on_press=None,
-on_release=pres_key)
+    on_press=None,
+    on_release=pres_key)
 listener.start()
 
 while True:
