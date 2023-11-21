@@ -25,9 +25,22 @@ class Helico:
     #def draw_info(self):
     #    print(f'╭{"─" * (self.w)*2}╮')
     #    print("│", end="")
-    #    print(f'[L:{"💜" * (self.w//2-2)}][T:        ]', end="")
+    #    print(f'[L:{"💜" * (self.w//2-2)}]', end="")
     #    print("│")
     #    print("│", end="")
     #    print(f'[W:{"💧" * (self.w//2-3)}  ][M:{"💰" * (self.w//2-3)}  ]', end="")
     #    print("│")
     #    print(f'╰{"─" * (self.w)*2}╯')
+
+    def export_data(self):
+        return {"score": self.score,
+                "lives": self.lives,
+                "x": self.x, "y": self.y,
+                "tank": self.tank, "mxtank": self.mxtank,}
+    
+    def import_data(self, data):
+        self.x, self.y = data["x"] or 0, data["y"] or 0
+        self.tank, self.mxtank = data["tank"] or 0, data["mxtank"] or 1
+        self.score = data["score"] or 0
+        self.lives = data["lives"] or 3
+        

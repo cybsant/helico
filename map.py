@@ -10,8 +10,8 @@ from utils import randcell2
 #CELL_TYPES = ['⬛', '🌲', '🌊', '🏥', '🏦', '🔥'] # * DEFAUT
 CELL_TYPES = ['⬛', '🌳', '🌀', '🏥', '🏦', '🔥']
 # >>>>>>>>>>    0     1     2     3     4     5
-#INFO_TYPES = ['💰','💧','💜']
-#MOV_TYPES = ['🌧 ','🌩 ','🚒']
+# INF_TYPES = ['💰','💧','💜']
+# MOV_TYPES = ['🌧 ','🌩 ','🚒']
 
 #TODO !!! игровой баланс !!! 
 TREE_BOUNS = 100
@@ -141,3 +141,10 @@ class Map:
                 print(f'│ :. GAME OVER .:. YOUR SCORE: {helico.score} .: │')
                 print(f'╰───────────────────────────────────────╯')
                 exit(0)
+    
+    def export_data(self):
+        return {"cells": self.cells}
+    
+    def import_data(self, data):
+        self.cells = data["cells"] or [[0 for i in range(self.w)] for j in range(self.h)]
+        
