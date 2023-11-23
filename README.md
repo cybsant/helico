@@ -1,3 +1,3 @@
-# helico
+# *** SAVE THE FOREST ***
 Simple python game
-*** SAVE THE FOREST ***
+
